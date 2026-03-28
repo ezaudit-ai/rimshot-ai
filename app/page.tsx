@@ -18,6 +18,8 @@ const EXAMPLES = [
   "I paid $11 for a coffee and a life crisis.",
 ]
 
+const DONATE_URL = 'https://buymeacoffee.com/wahuwan'
+
 type ToneId = (typeof TONES)[number]['id']
 
 type ApiResponse = {
@@ -30,7 +32,7 @@ function clampInput(input: string) {
 }
 
 function getShareText(input: string, punchline: string, toneLabel: string) {
-  return `INPUT: “${input}”\nTONE: ${toneLabel}\nPUNCHLINE: ${punchline}\n\nGenerated on rimshot.ai`
+  return `INPUT: “${input}”\nTONE: ${toneLabel}\nPUNCHLINE: ${punchline}\n\nGenerated on rimshot.ai\nSupport: ${DONATE_URL}`
 }
 
 async function playSyntheticRimshot() {
@@ -306,6 +308,14 @@ export default function Page() {
                 >
                   Regenerate
                 </button>
+                <a
+                  className="btnSecondary"
+                  href={DONATE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Donate
+                </a>
               </div>
 
               <div className="footnote">
