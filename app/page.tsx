@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const TONES = [
   { id: 'dad', label: 'Dad Joke' },
@@ -32,7 +32,12 @@ function clampInput(input: string) {
 }
 
 function getShareText(input: string, punchline: string, toneLabel: string) {
-  return `INPUT: “${input}”\nTONE: ${toneLabel}\nPUNCHLINE: ${punchline}\n\nGenerated on rimshot.ai\nSupport: ${DONATE_URL}`
+  return `INPUT: "${input}"
+TONE: ${toneLabel}
+PUNCHLINE: ${punchline}
+
+Generated on rimshot.ai
+Support: ${DONATE_URL}`
 }
 
 async function playSyntheticRimshot() {
@@ -58,6 +63,7 @@ async function playSyntheticRimshot() {
   for (let i = 0; i < data.length; i++) {
     data[i] = Math.random() * 2 - 1
   }
+
   const noise = ctx.createBufferSource()
   noise.buffer = noiseBuffer
   const noiseFilter = ctx.createBiquadFilter()
@@ -85,6 +91,7 @@ async function playSyntheticRimshot() {
     osc.start(ctx.currentTime + 0.16)
     osc.stop(ctx.currentTime + 0.34)
   }
+
   cymGain.connect(ctx.destination)
 
   // Clean up
@@ -183,7 +190,7 @@ export default function Page() {
 
   async function copyResult() {
     if (!result) return
-    const share = getShareText(inputText, result.punchline, result.tone)
+    const share = getShareText(inputText, result.punchline, toneLabel)
     try {
       await navigator.clipboard.writeText(share)
       setCopied(true)
