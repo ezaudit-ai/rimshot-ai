@@ -216,7 +216,7 @@ export default function Page() {
         </div>
         <div className="hint">
           (Sound works even without a file — it synthesizes a rimshot automatically. If
-          you add <code>public/rimshot.mp3</code>, it will use it.)
+          you add <code>public/rimshot.mp3</code>, it will use it.) 10% of donations go to the Prostate Cancer Foundation via wahuwan.org.
         </div>
       </header>
 
